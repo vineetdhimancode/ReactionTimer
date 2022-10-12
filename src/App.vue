@@ -1,6 +1,6 @@
 <template>
   <h1>Reaction Timer</h1>
-  <button class="playBtn" :disabled="isPlaying" @click="start">Play</button>
+  <button :class="{'disabledPlayBtn': isPlaying, 'playBtn': true}" :disabled="isPlaying" @click="start">Play</button>
   <Block v-if="isPlaying" :delay="delay" @showResult="showResult"></Block>
   <Result v-if="displayResult" :reactionTime="score"/>
 </template>
@@ -53,10 +53,15 @@ export default {
   background: rgb(224, 70, 70);
   border: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 
-.playBtn:hover {
+.playBtn:focus {
   background: rgb(145, 43, 43);
   cursor: pointer;
+}
+
+.disabledPlayBtn {
+  background: rgb(224 167 167);
 }
 </style>
